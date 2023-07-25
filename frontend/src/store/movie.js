@@ -6,7 +6,7 @@ export const useMovieStore = defineStore('movie', {
   state: () => ({
     movies: {},
     movie: null,
-    loading: false,
+    loading: true,
     error: null,
     count: null,
   }),
@@ -59,7 +59,17 @@ export const useMovieStore = defineStore('movie', {
       this.loading = true;
       axios.patch(`http://localhost:8000/actors/${data.id}/`, data)
         .then(({data}) => {
-          console.log(data);
+          this.fetchMovie(data.film)
+        })
+        .catch((err) => console.error(err))
+        .finally(() => {this.loading = false});
+    },
+    addActor(data) {
+      this.loading = true;
+      data.film = this.movie.id;
+      axios.post(`http://localhost:8000/actors/`, data)
+        .then(({data}) => {
+          this.fetchMovie(data.film)
         })
         .catch((err) => console.error(err))
         .finally(() => {this.loading = false});
