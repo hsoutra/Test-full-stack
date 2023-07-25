@@ -6,7 +6,7 @@ class Actor(models.Model):
     id = models.AutoField(primary_key=True)
     first_name= models.CharField(max_length=256, null=False)
     last_name= models.CharField(max_length=256, null=False)
-    film = models.ForeignKey(Film, related_name="actors", on_delete= models.CASCADE)
+    film = models.ForeignKey(Film, related_name="actors", on_delete= models.CASCADE,blank=True)
     created_at = models.DateField(auto_now_add=True)
     modified_at = models.DateField(auto_now=True)
     class Meta:

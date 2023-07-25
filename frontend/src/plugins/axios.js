@@ -6,5 +6,6 @@ export default {
       baseURL: "http://localhost:8000"
     })
     app.provide('http', http)
+    // store.
   }
 }
