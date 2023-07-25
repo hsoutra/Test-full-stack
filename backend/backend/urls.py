@@ -17,9 +17,11 @@ from django.urls import path, include
 from rest_framework import routers
 
 from film.views import FilmViewSet
+from acteur.views import ActorViewSet
 
 router = routers.DefaultRouter()
 router.register(r'films', FilmViewSet)
+router.register(r'actors', ActorViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
