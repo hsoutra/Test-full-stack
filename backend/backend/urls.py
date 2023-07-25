@@ -18,10 +18,12 @@ from rest_framework import routers
 
 from film.views import FilmViewSet
 from acteur.views import ActorViewSet
+from review.views import ReviewViewSet
 
 router = routers.DefaultRouter()
 router.register(r'films', FilmViewSet)
 router.register(r'actors', ActorViewSet)
+router.register(r'reviews', ReviewViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
